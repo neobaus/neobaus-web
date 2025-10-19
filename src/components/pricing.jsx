@@ -67,21 +67,21 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-20 bg-muted/30">
+    <section id="pricing" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <Badge variant="outline" className="mb-3 sm:mb-4 text-xs">
             Pricing
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Choose Your Plan
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Start with a free trial and scale as you grow. No hidden fees, cancel anytime.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <Card 
               key={index} 
@@ -97,27 +97,27 @@ export function Pricing() {
                 </div>
               )}
               
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+              <CardHeader className="text-center pb-4 sm:pb-6 lg:pb-8">
+                <CardTitle className="text-xl sm:text-2xl">{plan.name}</CardTitle>
+                <div className="mt-3 sm:mt-4">
+                  <span className="text-3xl sm:text-4xl font-bold">{plan.price}</span>
+                  <span className="text-muted-foreground text-sm sm:text-base">{plan.period}</span>
                 </div>
-                <CardDescription className="mt-2">{plan.description}</CardDescription>
+                <CardDescription className="mt-2 text-sm sm:text-base">{plan.description}</CardDescription>
               </CardHeader>
 
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
+              <CardContent className="space-y-3 sm:space-y-4">
+                <div className="space-y-2 sm:space-y-3">
                   {plan.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-3">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
+                    <div key={featureIndex} className="flex items-center space-x-2 sm:space-x-3">
+                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
+                      <span className="text-xs sm:text-sm">{feature}</span>
                     </div>
                   ))}
                   {plan.limitations.map((limitation, limitIndex) => (
-                    <div key={limitIndex} className="flex items-center space-x-3 text-muted-foreground">
-                      <X className="h-4 w-4 flex-shrink-0" />
-                      <span className="text-sm">{limitation}</span>
+                    <div key={limitIndex} className="flex items-center space-x-2 sm:space-x-3 text-muted-foreground">
+                      <X className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm">{limitation}</span>
                     </div>
                   ))}
                 </div>
@@ -125,7 +125,7 @@ export function Pricing() {
 
               <CardFooter>
                 <Button 
-                  className={`w-full ${
+                  className={`w-full text-sm sm:text-base ${
                     plan.popular 
                       ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
                       : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'

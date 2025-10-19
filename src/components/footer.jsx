@@ -48,7 +48,7 @@ export function Footer() {
         <div className="py-12 border-b">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Stay Updated with Dtek
+              Stay Updated with neobaus
             </h3>
             <p className="text-muted-foreground mb-8">
               Get the latest insights, tips, and updates delivered to your inbox
@@ -78,7 +78,7 @@ export function Footer() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-lg">S</span>
                 </div>
-                <span className="text-xl font-bold text-foreground">Dtek</span>
+                <span className="text-xl font-bold text-foreground">neobaus</span>
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
                 AI-powered website analytics and sales platform that helps businesses make data-driven decisions and maximize their growth potential.
@@ -86,7 +86,7 @@ export function Footer() {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>hello@Dtek.com</span>
+                  <span>hello@neobaus.com</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <p className="text-sm text-muted-foreground">
-                © 2024 Dtek. All rights reserved.
+                © 2024 neobaus. All rights reserved.
               </p>
               <Badge variant="outline" className="text-xs">
                 SOC 2 Compliant

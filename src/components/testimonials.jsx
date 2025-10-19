@@ -10,7 +10,7 @@ export function Testimonials() {
       company: "TechCorp",
       avatar: "SJ",
       rating: 5,
-      content: "Dtek has completely transformed how we analyze our website performance. The AI predictions are incredibly accurate and have helped us increase our conversion rate by 35%.",
+      content: "neobaus has completely transformed how we analyze our website performance. The AI predictions are incredibly accurate and have helped us increase our conversion rate by 35%.",
       badge: "35% conversion increase"
     },
     {
@@ -46,7 +46,7 @@ export function Testimonials() {
       company: "InnovateLab",
       avatar: "LW",
       rating: 5,
-      content: "Dtek's predictive analytics helped us identify trends before our competitors. It's like having a crystal ball for our business.",
+      content: "neobaus's predictive analytics helped us identify trends before our competitors. It's like having a crystal ball for our business.",
       badge: "Competitive advantage"
     },
     {
@@ -71,7 +71,7 @@ export function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of businesses that trust Dtek to power their growth
+            Join thousands of businesses that trust neobaus to power their growth
           </p>
         </div>
 

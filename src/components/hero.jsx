@@ -35,42 +35,42 @@ export function Hero() {
     // keep the script around (don't remove on unmount) to avoid reloading on navigation
   }, [])
   return (
-    <section className="relative min-h-screen flex items-end justify-start overflow-hidden pt-16">
-      {/* Unicorn.studio Interactive Background */}
-      <div 
-        id="unicorn-studio-background"
-        className="absolute inset-0 z-0"
-        aria-label="Interactive background element - unicorn.studio integration"
-      >
-        <div 
-          data-us-project="ZJScHH3kB3zCRXfGWNyW" 
-          style={{width: "100%", height: "100%", minHeight: "100vh"}}
-          data-us-initialized="true"
-        ></div>
-        <script 
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pb-20 sm:pb-32">
-        <div className="container mx-auto">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-tight tracking-tight">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-16 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
+          {/* Left Side - Text Content */}
+          <div className="flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-tight tracking-tight">
               AI PREDICTIONS,
+              <br className="hidden sm:block" />
               AUTOMATIONS.
             </h1>
             
-            <div className="mt-8 sm:mt-12">
+            <div className="mt-4 sm:mt-6 lg:mt-8">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Try it out
               </Button>
+            </div>
+          </div>
+
+          {/* Right Side - SVG with Unicorn Studio */}
+          <div 
+            id="unicorn-studio-background"
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] order-1 lg:order-2"
+            aria-label="Interactive background element - unicorn.studio integration"
+          >
+            <div 
+              data-us-project="ZJScHH3kB3zCRXfGWNyW" 
+              className="w-full h-full"
+            >
+              <img 
+                src="/solution-mindset.svg" 
+                alt="Solution Mindset" 
+                className="w-full h-full object-contain object-center"
+              />
             </div>
           </div>
         </div>

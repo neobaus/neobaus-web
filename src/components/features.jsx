@@ -43,34 +43,36 @@ export function Features() {
   ]
 
   return (
-    <section id="features" className="py-20 bg-muted/30">
+    <section id="features" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <Badge variant="outline" className="mb-3 sm:mb-4 text-xs">
             Features
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Powerful AI-Driven Analytics
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Transform your website data into actionable insights with our cutting-edge AI technology
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => (
             <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  {feature.icon}
+              <CardHeader className="pb-3 sm:pb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                    {feature.icon}
+                  </div>
                   <Badge variant="secondary" className="text-xs">
                     {feature.badge}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">{feature.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
+              <CardContent className="pt-0">
+                <CardDescription className="text-sm sm:text-base leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>
