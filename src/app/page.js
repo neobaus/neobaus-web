@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
 import { AnalyticsShowcase } from "@/components/analytics-showcase"
-import { Pricing } from "@/components/pricing"
+import { About } from "@/components/about"
 import { Testimonials } from "@/components/testimonials"
 import { Footer } from "@/components/footer"
 
@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <Features />
       <AnalyticsShowcase />
-      <Pricing />
+      <About />
       <Testimonials />
       <Footer />
     </div>

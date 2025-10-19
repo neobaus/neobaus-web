@@ -28,17 +28,12 @@ export function Navbar() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#pricing" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
-                  Pricing
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
                 <NavigationMenuLink href="#about" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#contact" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
+                <NavigationMenuLink href="#footer" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
                   Contact
                 </NavigationMenuLink>
               </NavigationMenuItem>

@@ -42,8 +42,11 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-muted/30 border-t">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="footer" className="bg-muted/30 border-t relative overflow-hidden">
+      {/* Glow Effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 glow-effect"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 glow-effect" style={{animationDelay: '1.5s'}}></div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Newsletter Section */}
         <div className="py-12 border-b">
           <div className="max-w-4xl mx-auto text-center">
@@ -70,14 +73,12 @@ export function Footer() {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-12">
+        <div className="py-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">S</span>
-                </div>
+                
                 <span className="text-xl font-bold text-foreground">neobaus</span>
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
@@ -86,15 +87,15 @@ export function Footer() {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>hello@neobaus.com</span>
+                  <span>ardynubanos@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+63 (927) 9107589</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4" />
-                  <span>San Francisco, CA</span>
+                  <span>Caloocan City, Philippines</span>
                 </div>
               </div>
             </div>
@@ -123,7 +124,7 @@ export function Footer() {
         <Separator />
 
         {/* Bottom Footer */}
-        <div className="py-6">
+        <div className="py-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <p className="text-sm text-muted-foreground">
