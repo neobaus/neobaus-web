@@ -64,11 +64,11 @@ export function Hero() {
           <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1">
             <h1 
               ref={headlineRef}
-              className="text-5xl sm:text-7xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
             >
               <div className="overflow-hidden">
                 <span className="inline-block">
-                  {"AI PREDICTIONS".split('').map((char, index) => (
+                  {"AI Integrations &".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
                     </span>
@@ -77,21 +77,27 @@ export function Hero() {
               </div>
               <div className="overflow-hidden">
                 <span className="inline-block text-primary">
-                  {"AUTOMATIONS.".split('').map((char, index) => (
+                  {"Smart Automations".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </span>
               </div>
+              
             </h1>
+            <div className="overflow-hidden font-bold text-gray-400">
+                <span className="inline-block">
+                Transform your ideas into reality with intelligent AI solutions designed to streamline workflows, boost efficiency, and accelerate growth.
+                </span>
+            </div>
             
-            <div className="w-full mt-4 sm:mt-6 lg:mt-6">
+            <div className="w-full mt-4 sm:mt-2 lg:mt-2">
               <Button 
                 size="lg" 
-                className="w-full lg:w-9/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full lg:w-9/10 text-base sm:text-lg px-6 sm:px-4 py-4 sm:py-4 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Check us out 
+                Get Started Today
               </Button>
             </div>
           </div>
