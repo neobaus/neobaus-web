@@ -60,11 +60,11 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
-          {/* Left Side - Text Content */}
-          <div className="flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">
+          {/* Text Content */}
+          <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1">
             <h1 
               ref={headlineRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
             >
               <div className="overflow-hidden">
                 <span className="inline-block">
@@ -96,10 +96,10 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Side - SVG with Unicorn Studio */}
+          {/* SVG with Unicorn Studio - Hidden on mobile */}
           <div 
             id="unicorn-studio-background"
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] order-1 lg:order-2"
+            className="hidden lg:block relative w-full h-[600px] xl:h-[700px] order-2"
             aria-label="Interactive background element - unicorn.studio integration"
           >
             <div 
