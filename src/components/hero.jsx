@@ -64,7 +64,7 @@ export function Hero() {
           <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1">
             <h1 
               ref={headlineRef}
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
+              className="text-5xl sm:text-5xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
             >
               <div className="overflow-hidden">
                 <span className="inline-block">

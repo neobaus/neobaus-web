@@ -37,7 +37,7 @@ export function Footer() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 glow-effect" style={{animationDelay: '1.5s'}}></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Newsletter Section */}
-        <div className="py-12 border-b">
+        {/* <div className="py-12 border-b">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Stay Updated with neobaus
@@ -59,7 +59,7 @@ export function Footer() {
               No spam, unsubscribe at any time
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Main Footer Content */}
         <div className="py-12 relative z-10">
