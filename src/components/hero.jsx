@@ -57,7 +57,7 @@ export function Hero() {
     })
   }, [])
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16 pb-8">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-8 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
           {/* Text Content */}

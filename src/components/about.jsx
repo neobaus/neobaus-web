@@ -15,11 +15,11 @@ export function About() {
       title: "Global Reach",
       description: "Serving clients both locally and internationally"
     },
-    {
-      icon: <GraduationCap className="h-6 w-6 text-primary" />,
-      title: "Master's Degree",
-      description: "Advanced education in Computer Science"
-    },
+    // {
+    //   icon: <GraduationCap className="h-6 w-6 text-primary" />,
+    //   title: "Master's Degree",
+    //   description: "Advanced education in Computer Science"
+    // },
     {
       icon: <Award className="h-6 w-6 text-primary" />,
       title: "Proven Track Record",
@@ -35,77 +35,55 @@ export function About() {
             About Us
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Meet the Team
+            Our Goal
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Learn about the vision and expertise behind neobaus
-          </p>
+          {/* <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+            Learn about the mission and vision guiding neobaus
+          </p> */}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-             {/* Founder Card */}
-             <Card className="hover:shadow-lg transition-shadow duration-300">
-                 <CardHeader className="text-center pb-2 sm:pb-3">
-                 <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4">
-                     AU
-                 </div>
-                 <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-1 sm:mb-2">
-                     Ardy Ubanos
-                 </CardTitle>
-                 <CardDescription className="text-sm sm:text-base text-muted-foreground mb-2 sm:mb-3">
-                     CEO & Founder of neobaus
-                 </CardDescription>
-                 </CardHeader>
-                 <CardContent className="text-center pt-0">
-                 <Button size="lg" className="text-sm sm:text-base">
-                     Connect with Ardy
-                 </Button>
-                 </CardContent>
-             </Card>
-
-             {/* Employee Card */}
-             <Card className="hover:shadow-lg transition-shadow duration-300">
-                 <CardHeader className="text-center pb-2 sm:pb-3">
-                 <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4">
-                     E1
-                 </div>
-                 <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-1 sm:mb-2">
-                     somename
-                 </CardTitle>
-                 <CardDescription className="text-sm sm:text-base text-muted-foreground mb-2 sm:mb-3">
-                     Employee1
-                 </CardDescription>
-                 </CardHeader>
-                 <CardContent className="text-center pt-0">
-                 <Button size="lg" className="text-sm sm:text-base">
-                     Connect with somename
-                 </Button>
-                 </CardContent>
-             </Card>
-
-             {/* Placeholder for third card */}
-             <Card className="hover:shadow-lg transition-shadow duration-300">
-                 <CardHeader className="text-center pb-2 sm:pb-3">
-                 <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4">
-                     E2
-                 </div>
-                 <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-1 sm:mb-2">
-                     Coming Soon
-                 </CardTitle>
-                 <CardDescription className="text-sm sm:text-base text-muted-foreground mb-2 sm:mb-3">
-                     Team Member
-                 </CardDescription>
-                 </CardHeader>
-                 <CardContent className="text-center pt-0">
-                 <Button size="lg" className="text-sm sm:text-base" disabled>
-                     Connect Soon
-                 </Button>
-                 </CardContent>
-             </Card>
+        {/* Company Goal Placeholder */}
+        <div className="max-w-5xl mx-auto">
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="text-center pb-4 sm:pb-6">
+              <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                Empower businesses with accessible, AI-driven analytics
+              </CardTitle>
+              <CardDescription className="text-sm sm:text-base text-muted-foreground">
+                Our company goal is to democratize advanced analytics, enabling organizations of any size to make data-driven decisions with clarity, confidence, and speed.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                {achievements.map((achievement, index) => (
+                  <Card key={index} className="bg-background/60 border-dashed">
+                    <CardHeader className="pb-3 sm:pb-4">
+                      <div className="flex items-center space-x-3 mb-2">
+                        {achievement.icon}
+                        <CardTitle className="text-base sm:text-lg">
+                          {achievement.title}
+                        </CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-xs sm:text-sm leading-relaxed">
+                        {achievement.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="text-center mt-6">
+                <Button variant="outline" size="lg" className="text-sm sm:text-base">
+                  Learn more
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Company Vision */}
-        <div className="mt-12 sm:mt-16 lg:mt-20">
+        {/* <div className="mt-12 sm:mt-16 lg:mt-20">
           <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
             <CardHeader className="text-center pb-4 sm:pb-6">
               <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3 sm:mb-4">
@@ -135,7 +113,7 @@ export function About() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </div>
     </section>
   )
