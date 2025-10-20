@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
-import { Features } from "@/components/features"
+import { Services } from "@/components/services"
 import { AnalyticsShowcase } from "@/components/analytics-showcase"
 import { About } from "@/components/about"
 import { Testimonials } from "@/components/testimonials"
@@ -11,8 +11,8 @@ export default function Home() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <Features />
-      <AnalyticsShowcase />
+      <Services />
+      {/* <AnalyticsShowcase /> */}
       <About />
       <Testimonials />
       <Footer />

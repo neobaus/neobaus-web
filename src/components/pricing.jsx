@@ -10,7 +10,7 @@ export function Pricing() {
       price: "$29",
       period: "/month",
       description: "Perfect for small websites and blogs",
-      features: [
+      services: [
         "Up to 10,000 page views",
         "Basic analytics dashboard",
         "Email support",
@@ -29,7 +29,7 @@ export function Pricing() {
       price: "$79",
       period: "/month",
       description: "Ideal for growing businesses",
-      features: [
+      services: [
         "Up to 100,000 page views",
         "Advanced analytics dashboard",
         "Priority support",
@@ -48,7 +48,7 @@ export function Pricing() {
       price: "$199",
       period: "/month",
       description: "For large organizations",
-      features: [
+      services: [
         "Unlimited page views",
         "Full analytics suite",
         "24/7 dedicated support",
@@ -108,10 +108,10 @@ export function Pricing() {
 
               <CardContent className="space-y-3 sm:space-y-4">
                 <div className="space-y-2 sm:space-y-3">
-                  {plan.features.map((feature, featureIndex) => (
+                  {plan.services.map((service, featureIndex) => (
                     <div key={featureIndex} className="flex items-center space-x-2 sm:space-x-3">
                       <Check className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
-                      <span className="text-xs sm:text-sm">{feature}</span>
+                      <span className="text-xs sm:text-sm">{service}</span>
                     </div>
                   ))}
                   {plan.limitations.map((limitation, limitIndex) => (

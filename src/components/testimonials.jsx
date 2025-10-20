@@ -91,7 +91,7 @@ export function Testimonials() {
       company: "RetailPro",
       avatar: "MG",
       rating: 5,
-      content: "The custom dashboards and reporting features are exactly what we needed. Our stakeholders love the clear, actionable insights.",
+      content: "The custom dashboards and reporting services are exactly what we needed. Our stakeholders love the clear, actionable insights.",
       badge: "Custom dashboards"
     }
   ]

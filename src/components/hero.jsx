@@ -64,11 +64,11 @@ export function Hero() {
           <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1">
             <h1 
               ref={headlineRef}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
+              className="text-5xl sm:text-7xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
             >
               <div className="overflow-hidden">
                 <span className="inline-block">
-                  {"AI PREDICTIONS,".split('').map((char, index) => (
+                  {"AI PREDICTIONS".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
                     </span>
@@ -86,12 +86,12 @@ export function Hero() {
               </div>
             </h1>
             
-            <div className="mt-4 sm:mt-6 lg:mt-6">
+            <div className="w-full mt-4 sm:mt-6 lg:mt-6">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full lg:w-9/10 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Try it out
+                Check us out 
               </Button>
             </div>
           </div>

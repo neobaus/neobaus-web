@@ -5,27 +5,16 @@ import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from "lucide-react"
 
 export function Footer() {
   const footerLinks = {
-    Product: [
-      { name: "Features", href: "#features" },
+    Services: [
+      { name: "AI Integrations", href: "#services" },
       { name: "Analytics", href: "#analytics" },
-      { name: "Pricing", href: "#pricing" },
-      { name: "API", href: "#" },
-      { name: "Integrations", href: "#" }
+      { name: "Custom Development", href: "#pricing" },
+      
     ],
     Company: [
       { name: "About Us", href: "#about" },
-      { name: "Careers", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Press", href: "#" },
-      { name: "Partners", href: "#" }
     ],
-    Resources: [
-      { name: "Documentation", href: "#" },
-      { name: "Help Center", href: "#" },
-      { name: "Community", href: "#" },
-      { name: "Tutorials", href: "#" },
-      { name: "Status", href: "#" }
-    ],
+    
     Legal: [
       { name: "Privacy Policy", href: "#" },
       { name: "Terms of Service", href: "#" },
@@ -128,11 +117,11 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
               <p className="text-sm text-muted-foreground">
-                © 2024 neobaus. All rights reserved.
+                © 2025 neobaus. All rights reserved.
               </p>
-              <Badge variant="outline" className="text-xs">
+              {/* <Badge variant="outline" className="text-xs">
                 SOC 2 Compliant
-              </Badge>
+              </Badge> */}
             </div>
             
             <div className="flex items-center space-x-4">

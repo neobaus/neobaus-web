@@ -18,13 +18,8 @@ export function Navbar() {
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#features" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
-                  Features
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#analytics" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
-                  Analytics
+                <NavigationMenuLink href="#services" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
+                  Services
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -42,11 +37,8 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <Button variant="ghost" className="hidden sm:inline-flex hover:text-primary text-sm px-3 py-2">
-              Login
-            </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all duration-200 text-sm px-3 sm:px-4 py-2">
-              Join up
+              Book a meeting
             </Button>
           </div>
         </div>
