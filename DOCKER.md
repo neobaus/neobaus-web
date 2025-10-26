@@ -4,13 +4,30 @@ This project is dockerized and ready to run in containers. The setup works seaml
 
 ## Quick Start
 
-### Build and Run with Docker Compose
+### Development Mode (with Hot Reload)
+
+For development with auto-reload on file changes:
+
+```bash
+docker-compose -f docker-compose.dev.yml up
+```
+
+This will:
+
+- Mount your source code as a volume for hot reloading
+- Start the development server
+- Auto-reload when you save changes
+- Use resource limits (1GB memory, 10% CPU)
+
+### Production Mode
+
+For production builds:
 
 ```bash
 docker-compose up -d
 ```
 
-This will build the image and start the container. The app will be available at `http://localhost:3000`
+This will build and run the production image.
 
 ### Build and Run with Docker
 
@@ -42,15 +59,20 @@ docker-compose down
 docker-compose up -d --build
 ```
 
-### Run in Development Mode
+## Auto-Reload in Development
 
-If you want to run with hot-reloading in Docker, you can modify the docker-compose.yml:
+The `docker-compose.dev.yml` file is configured for development with hot reloading:
 
-```yaml
-command: npm run dev
+- **Volume mounting**: Your source code is mounted into the container
+- **Hot reloading**: Changes to your files trigger automatic reloads in the browser
+- **Faster iteration**: No need to rebuild the image for code changes
+
+To stop and restart:
+
+```bash
+docker-compose -f docker-compose.dev.yml down
+docker-compose -f docker-compose.dev.yml up
 ```
-
-Then rebuild and restart.
 
 ## Production Deployment
 
