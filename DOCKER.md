@@ -1,6 +1,6 @@
 # Docker Setup
 
-This project is dockerized and ready to run in containers.
+This project is dockerized and ready to run in containers. The setup works seamlessly on both Windows and macOS (as well as Linux).
 
 ## Quick Start
 
@@ -62,6 +62,19 @@ The Dockerfile uses a multi-stage build for optimal image size:
 
 The production image is built with `output: 'standalone'` in next.config.mjs for smaller image size.
 
-## Health Check
+## Resource Limits
 
-The container exposes port 3000 and runs on Node.js 18 Alpine for a minimal footprint.
+The container is configured with resource limits:
+
+- **Memory**: 1GB limit, 512MB reserved
+- **CPU**: 10% limit, 5% reserved
+
+## Platform Compatibility
+
+The Docker setup uses `linux/amd64` platform for cross-platform compatibility. It works on:
+
+- ✅ Windows (with Docker Desktop)
+- ✅ macOS (Intel and Apple Silicon with Docker Desktop)
+- ✅ Linux
+
+The Alpine-based images provide a consistent and minimal footprint across all platforms.
