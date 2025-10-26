@@ -1,13 +1,15 @@
-# Stage 1: Dependencies
+# Stage 1: Dependencies (production only)
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package files
 COPY package.json package-lock.json* yarn.lock* ./
+
+# Install production dependencies only
 RUN \
-    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm ci; \
+    if [ -f yarn.lock ]; then yarn install --production --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then npm ci --only=production; \
     else echo "Lockfile not found." && exit 1; \
     fi
 
@@ -32,21 +34,19 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy public folder
-COPY --from=builder /app/public ./public
-
-# Copy standalone output
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy built application and dependencies
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/next.config.mjs ./next.config.mjs
 
 USER nextjs
 
 EXPOSE 3000
 
 ENV PORT 3000
-
-# Use hostname that works on all platforms (Windows, Mac, Linux)
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
 

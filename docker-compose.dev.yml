@@ -13,7 +13,7 @@ services:
     volumes:
       # Mount source code for hot reloading
       - .:/app
-      - /app/node_modules
+      # - /app/node_modules
       - /app/.next
     restart: unless-stopped
     deploy:
