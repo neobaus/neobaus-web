@@ -111,13 +111,17 @@ export function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
           {/* Text Content */}
-          <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1">
+          <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1 w-full">
             <h1 
               ref={headlineRef}
-              className="text-5xl sm:text-5xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold text-foreground leading-none tracking-tight text-center lg:text-left"
+              className="font-bold text-foreground leading-none tracking-tight text-center lg:text-left overflow-hidden w-full"
+              style={{
+                fontSize: 'clamp(1.5rem, 12vw, 10rem)',
+                letterSpacing: '-0.02em'
+              }}
             >
-              <div className="overflow-hidden">
-                <span className="inline-block">
+              <div className="overflow-hidden block w-full">
+                <span className="inline-block whitespace-nowrap">
                   {"AI Integrations &".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
@@ -125,8 +129,8 @@ export function Hero() {
                   ))}
                 </span>
               </div>
-              <div className="overflow-hidden">
-                <span className="inline-block text-primary">
+              <div className="overflow-hidden block w-full">
+                <span className="inline-block text-primary whitespace-nowrap">
                   {"Smart Automations".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
@@ -136,7 +140,7 @@ export function Hero() {
               </div>
               
             </h1>
-            <div className="overflow-hidden font-bold text-gray-400">
+            <div className="overflow-hidden text-gray-400 text-sm sm:text-base md:text-lg lg:text-base xl:text-lg">
                 <span className="inline-block">
                 Transform your ideas into reality with intelligent AI solutions designed to streamline workflows, boost efficiency, and accelerate growth.
                 </span>
