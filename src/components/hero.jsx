@@ -131,7 +131,7 @@ export function Hero() {
               </div>
               <div className="overflow-hidden block w-full">
                 <span className="inline-block text-primary whitespace-nowrap">
-                  {"Smart Automations".split('').map((char, index) => (
+                  {"Smarter Automations".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
                     </span>
