@@ -4,43 +4,27 @@ import { BarChart3, Brain, Zap, Shield, Target, TrendingUp } from "lucide-react"
 
 export function Services() {
   const services = [
-    {
-      icon: <Brain className="h-8 w-8 text-primary" />,
-      title: "AI-Powered Analytics",
-      description: "Advanced machine learning algorithms analyze your website data to provide actionable insights and predictions.",
-      badge: "Core Service"
-    },
-    {
-      icon: <BarChart3 className="h-8 w-8 text-primary" />,
-      title: "Real-time Dashboard",
-      description: "Monitor your website performance with live data visualization and customizable metrics tracking.",
-      badge: "Popular"
-    },
-    {
-      icon: <Zap className="h-8 w-8 text-primary" />,
-      title: "Automated Reports",
-      description: "Generate comprehensive reports automatically and receive them via email or dashboard notifications.",
-      badge: "New"
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Data Security",
-      description: "Enterprise-grade security with end-to-end encryption to protect your valuable business data.",
-      badge: "Security"
-    },
-    {
-      icon: <Target className="h-8 w-8 text-primary" />,
-      title: "Conversion Optimization",
-      description: "AI-driven recommendations to improve your conversion rates and maximize your revenue potential.",
-      badge: "ROI Focused"
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8 text-primary" />,
-      title: "Growth Insights",
-      description: "Predict future trends and identify growth opportunities with our advanced forecasting models.",
-      badge: "Strategic"
-    }
-  ]
+  {
+    icon: <Brain className="h-8 w-8 text-primary" />,
+    title: "AI Integrations",
+    description: "Enhance your systems with intelligent AI solutions that deliver real-time insights and smarter decision-making.",
+    // badge: "Core Service",
+  },
+  {
+    icon: <Zap className="h-8 w-8 text-primary" />,
+    title: "Automations",
+    description: "Streamline repetitive tasks with powerful automations that save time and boost productivity effortlessly.",
+    // badge: "New",
+  },
+  {
+    icon: <TrendingUp className="h-8 w-8 text-primary" />,
+    title: "Custom Developments",
+    description: "Turn your ideas into reality with tailor-made AI solutions designed to grow and evolve with your business.",
+    // badge: "Strategic",
+  },
+];
+
+
 
   return (
     <section id="services" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
@@ -50,10 +34,10 @@ export function Services() {
             Services
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Powerful AI-Driven Analytics
+            Data and AI-Powered Solutions
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Transform your website data into actionable insights with our cutting-edge AI technology
+            Unlock the full potential of your business data with intelligent analytics that reveal insights, trends, and opportunities. Make smarter moves faster — with AI that adapts to your goals.
           </p>
         </div>
 

@@ -47,7 +47,7 @@ export function About() {
           <Card className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader className="text-center pb-4 sm:pb-6">
               <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
-                Empower businesses with accessible, AI-driven analytics
+                Empower businesses with accessible, Data and AI-driven solutions
               </CardTitle>
               <CardDescription className="text-sm sm:text-base text-muted-foreground">
                 Our company goal is to democratize advanced analytics, enabling organizations of any size to make data-driven decisions with clarity, confidence, and speed.

@@ -116,7 +116,7 @@ export function Hero() {
               ref={headlineRef}
               className="font-bold text-foreground leading-none tracking-tight text-center lg:text-left overflow-hidden w-full"
               style={{
-                fontSize: 'clamp(1.5rem, 12vw, 10rem)',
+                fontSize: 'clamp(1.5rem, 4vw, 10rem)',
                 letterSpacing: '-0.02em'
               }}
             >
@@ -131,7 +131,7 @@ export function Hero() {
               </div>
               <div className="overflow-hidden block w-full">
                 <span className="inline-block text-primary whitespace-nowrap">
-                  {"Smarter Automations".split('').map((char, index) => (
+                  {"Smart Automations".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
                       {char === ' ' ? '\u00A0' : char}
                     </span>
