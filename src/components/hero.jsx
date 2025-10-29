@@ -116,7 +116,7 @@ export function Hero() {
               ref={headlineRef}
               className="font-bold text-foreground leading-none tracking-tight text-center lg:text-left overflow-hidden w-full"
               style={{
-                fontSize: 'clamp(1.5rem, 4vw, 10rem)',
+                fontSize: 'clamp(1.5rem, 5vw + 1rem, 6rem)',
                 letterSpacing: '-0.02em'
               }}
             >

@@ -31,7 +31,7 @@ export function About() {
     <section id="about" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <Badge variant="outline" className="mb-3 sm:mb-4 text-xs">
+          <Badge variant="outline" className="mb-3 sm:mb-4 text-lg">
             About Us
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
@@ -73,11 +73,11 @@ export function About() {
                   </Card>
                 ))}
               </div>
-              <div className="text-center mt-6">
+              {/* <div className="text-center mt-6">
                 <Button variant="outline" size="lg" className="text-sm sm:text-base">
                   Learn more
                 </Button>
-              </div>
+              </div> */}
             </CardContent>
           </Card>
         </div>
