@@ -1,7 +1,9 @@
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export function Contact() {
   const contactInfo = [
@@ -24,6 +26,47 @@ export function Contact() {
       href: "https://maps.google.com/?q=Manila,Philippines"
     }
   ]
+
+  const { data: session, status: authStatus } = useSession()
+  const [message, setMessage] = useState("")
+  const [status, setStatus] = useState(null) // null | 'sending' | 'success' | 'error'
+  const [removeStatus, setRemoveStatus] = useState(null) // null | 'pending' | 'done' | 'error'
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    
+    if (!session) {
+      signIn('google')
+      return
+    }
+
+    setStatus("sending")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: session.user.name,
+          email: session.user.email,
+          message
+        }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      setStatus("success")
+      // name and email come from the authenticated session (read-only inputs)
+      // only clear the message textarea state here
+      setMessage("")
+    } catch (err) {
+      console.error(err)
+      setStatus("error")
+    }
+  }
 
   return (
     <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
@@ -70,42 +113,96 @@ export function Contact() {
               <CardTitle className="text-xl sm:text-2xl mb-2">Send us a Message</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-3 py-2 border rounded-md bg-background"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-3 py-2 border rounded-md bg-background"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">Message</label>
-                  <textarea
-                    className="w-full px-3 py-2 border rounded-md bg-background"
-                    rows={4}
-                    placeholder="Your message here..."
-                  ></textarea>
-                </div>
-                <div className="text-right">
-                  <Button type="submit" size="lg">
-                    Send Message
+              {!session ? (
+                <div className="text-center py-8">
+                  <p className="mb-4 text-lg">Please sign in to contact us</p>
+                  <Button onClick={() => signIn('google')} size="lg">
+                    Sign in with Google
                   </Button>
                 </div>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-1">Name</label>
+                      <input
+                        type="text"
+                        value={session.user.name}
+                        disabled
+                        className="w-full px-3 py-2 border rounded-md bg-background/50"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-1">Email</label>
+                      <input
+                        type="email"
+                        value={session.user.email}
+                        disabled
+                        className="w-full px-3 py-2 border rounded-md bg-background/50"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Message</label>
+                    <textarea
+                      className="w-full px-3 py-2 border rounded-md bg-background"
+                      rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      required
+                      placeholder="Your message here..."
+                    ></textarea>
+                  </div>
+                  <div className="text-right">
+                    <Button type="submit" size="lg" disabled={status === "sending"}>
+                      {status === "sending" ? "Sending..." : "Send Message"}
+                    </Button>
+                  </div>
+                  <div className="mt-4 flex justify-end items-center gap-4">
+                    <button
+                      type="button"
+                      className="text-sm text-red-600 hover:underline"
+                      onClick={async () => {
+                        const ok = window.confirm('Remove access to this app and revoke provider tokens? This will sign you out.')
+                        if (!ok) return
+                        try {
+                          setRemoveStatus('pending')
+                          const res = await fetch('/api/account/delete', { method: 'POST' })
+                          const data = await res.json().catch(() => ({}))
+                          if (!res.ok) {
+                            console.error('Failed to revoke:', data)
+                            setRemoveStatus('error')
+                            return
+                          }
+                          setRemoveStatus('done')
+                          // sign the user out on the client and redirect home
+                          await signOut({ callbackUrl: '/' })
+                        } catch (err) {
+                          console.error(err)
+                          setRemoveStatus('error')
+                        }
+                      }}
+                    >
+                      {removeStatus === 'pending' ? 'Removing...' : 'Remove access'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="text-sm text-muted-foreground hover:underline"
+                      onClick={async () => {
+                        await signOut({ callbackUrl: '/' })
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                  {status === "success" && <p className="text-sm text-green-600">Message sent — we'll get back to you shortly.</p>}
+                  {status === "error" && <p className="text-sm text-red-600">Something went wrong. Please try again later.</p>}
+                </form>
+              )}
             </CardContent>
           </Card>
-        </div>
+          </div>
       </div>
     </section>
   )

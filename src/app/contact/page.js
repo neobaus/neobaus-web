@@ -1,3 +1,4 @@
+'use client'
 import { Contact } from "@/components/contact"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
