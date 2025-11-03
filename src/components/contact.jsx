@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Mail, Phone, MapPin } from "lucide-react"
-import { useUser } from "@clerk/nextjs";
+import { useUser, useClerk } from "@clerk/nextjs";
+import { useSearchParams } from "next/navigation";
 import { Metadata } from 'next'
 import {
   ClerkProvider,
@@ -15,6 +16,7 @@ import {
 } from '@clerk/nextjs'
 
 import { Geist, Geist_Mono } from 'next/font/google'
+import { toast } from 'sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +34,8 @@ export const metadata = {
 }
 
 export function Contact() {
+  const searchParams = useSearchParams();
+  const showSent = searchParams.get("sent");
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
@@ -48,7 +52,7 @@ export function Contact() {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Location",
-      value: "Manila, Philippines",
+      value: "Caloocan City, Philippines, Metro Manila",
       href: "https://maps.google.com/?q=Manila,Philippines"
     }
   ]
@@ -60,6 +64,14 @@ export function Contact() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(null); // null | 'sending' | 'success' | 'error'
   const [removeStatus, setRemoveStatus] = useState(null); // null | 'pending' | 'done' | 'error'
+
+  useEffect(() => {
+    if (showSent && !user) {
+      toast.success("Message sent! We'll get back to you soon.", { duration: 15000 });
+    }
+  }, [showSent, user]);
+
+  const { signOut } = useClerk();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -89,6 +101,8 @@ export function Contact() {
 
       setStatus("success");
       setMessage("");
+      // Logout and redirect to /contact?sent=1
+      await signOut({ redirectUrl: "/contact?sent=1" });
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -109,9 +123,10 @@ export function Contact() {
             Have a question or want to work together? We'd love to hear from you.
           </p>
         </div>
+        
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
             {contactInfo.map((info, index) => (
               <a
                 key={index}
@@ -133,22 +148,20 @@ export function Contact() {
                 </Card>
               </a>
             ))}
-          </div>
+          </div> */}
 
           <Card className="overflow-hidden">
             <CardHeader className="text-center pb-0">
-              <CardTitle className="text-xl sm:text-2xl mb-2">Send us a Message</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl mb-0">Send us a Message</CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent className="p-0">
               <SignedOut>
-                <div className="text-center py-8">
-                  <p className="mb-4 text-lg">Please sign in to contact us</p>
-                  <SignInButton redirecturl="/contact" aschild='true'/>
-                  <SignUpButton redirecturl="/contact" aschild='true'>
+                <div className="text-center">
+                  <SignInButton redirecturl="/contact" aschild='true'>
                     <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer ml-2">
-                      Sign Up
+                      Securely send us a message
                     </button>
-                  </SignUpButton>
+                  </SignInButton>
                 </div>
               </SignedOut>
               <SignedIn>
@@ -184,57 +197,13 @@ export function Contact() {
                       placeholder="Your message here..."
                     ></textarea>
                   </div>
-                  <div className="text-right">
-                    <Button type="submit" size="lg" disabled={status === "sending"}>
+                  <div className="flex flex-row justify-end items-center gap-4 mt-4">
+                    <Button type="submit" size="lg" disabled={status === "sending"}
+                      >
                       {status === "sending" ? "Sending..." : "Send Message"}
                     </Button>
+                    <UserButton className="ml-0" />
                   </div>
-                  <div className="mt-4 flex justify-end items-center gap-4">
-                    <button
-                      type="button"
-                      className="text-sm text-red-600 hover:underline"
-                      onClick={async () => {
-                        const ok = window.confirm('Remove access to this app and revoke provider tokens? This will sign you out.');
-                        if (!ok) return;
-                        try {
-                          setRemoveStatus('pending');
-                          const res = await fetch('/api/account/delete', { method: 'POST' });
-                          const data = await res.json().catch(() => ({}));
-                          if (!res.ok) {
-                            console.error('Failed to revoke:', data);
-                            setRemoveStatus('error');
-                            return;
-                          }
-                          setRemoveStatus('done');
-                          // Assuming signOut is available from Clerk's useUser or imported
-                          // If not, you might need to import it or use a different method
-                          // For now, assuming it's available or will be added.
-                          // If not, this line will cause an error.
-                          // await signOut({ callbackUrl: '/' }); 
-                        } catch (err) {
-                          console.error(err);
-                          setRemoveStatus('error');
-                        }
-                      }}
-                    >
-                      {removeStatus === 'pending' ? 'Removing...' : 'Remove access'}
-                    </button>
-                    <button
-                      type="button"
-                      className="text-sm text-muted-foreground hover:underline"
-                      onClick={async () => {
-                        // Assuming signOut is available from Clerk's useUser or imported
-                        // If not, you might need to import it or use a different method
-                        // For now, assuming it's available or will be added.
-                        // If not, this line will cause an error.
-                        // await signOut({ callbackUrl: '/' }); 
-                      }}
-                    >
-                      Logout
-                    </button>
-                    <UserButton className="ml-4" />
-                  </div>
-                  {status === "success" && <p className="text-sm text-green-600">Message sent — we'll get back to you shortly.</p>}
                   {status === "error" && <p className="text-sm text-red-600">Something went wrong. Please try again later.</p>}
                 </form>
               </SignedIn>
