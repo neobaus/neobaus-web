@@ -143,8 +143,8 @@ export function Contact() {
               <SignedOut>
                 <div className="text-center py-8">
                   <p className="mb-4 text-lg">Please sign in to contact us</p>
-                  <SignInButton redirectUrl="/contact" />
-                  <SignUpButton redirectUrl="/contact">
+                  <SignInButton redirecturl="/contact" aschild='true'/>
+                  <SignUpButton redirecturl="/contact" aschild='true'>
                     <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer ml-2">
                       Sign Up
                     </button>
