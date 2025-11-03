@@ -73,20 +73,7 @@ export function Footer() {
               <p className="text-muted-foreground mb-6 max-w-sm">
                 AI-powered website analytics and sales platform that helps businesses make data-driven decisions and maximize their growth potential.
               </p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Mail className="h-4 w-4" />
-                  <span>ardynubanos@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Phone className="h-4 w-4" />
-                  <span>+63 (927) 9107589</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
-                  <span>Caloocan City, Philippines</span>
-                </div>
-              </div>
+              
             </div>
 
             {/* Footer Links */}

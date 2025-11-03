@@ -110,7 +110,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-muted/30">
+    <section id="contact" className="py-16 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <Badge variant="outline" className="mb-3 sm:mb-4 text-lg">
@@ -154,7 +154,7 @@ export function Contact() {
             <CardHeader className="text-center pb-0">
               <CardTitle className="text-xl sm:text-2xl mb-0">Send us a Message</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-6">
               <SignedOut>
                 <div className="text-center">
                   <SignInButton redirecturl="/contact" aschild='true'>
