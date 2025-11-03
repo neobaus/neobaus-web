@@ -46,7 +46,7 @@ export function Contact() {
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+63 (555) 123-4567",
       href: "tel:+15551234567"
     },
     {
