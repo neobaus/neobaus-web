@@ -15,13 +15,13 @@ export function Footer() {
       { name: "About Us", href: "#about" },
     ],
     
-    Legal: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" },
-      { name: "GDPR", href: "#" },
-      { name: "Security", href: "#" }
-    ]
+    // Legal: [
+    //   { name: "Privacy Policy", href: "#" },
+    //   { name: "Terms of Service", href: "#" },
+    //   { name: "Cookie Policy", href: "#" },
+    //   { name: "GDPR", href: "#" },
+    //   { name: "Security", href: "#" }
+    // ]
   }
 
   const socialLinks = [

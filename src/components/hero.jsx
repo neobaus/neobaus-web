@@ -76,6 +76,92 @@ export function Hero() {
       delay: 0.5
     })
   }, [])
+
+  // Ensure headline lines stay single-line by reducing font-size if they overflow.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !headlineRef.current) return
+
+    const el = headlineRef.current
+
+    // Helper: check if any direct child block (the two line containers) overflow their width
+    function isOverflowing() {
+      const blocks = el.querySelectorAll(':scope > div')
+      for (const b of blocks) {
+        if (b.scrollWidth > b.clientWidth + 1) return true
+      }
+      return false
+    }
+
+    // Adjust font-size proportionally so the two line containers no longer overflow.
+    // This computes the required scale factor (containerWidth / contentWidth) for each line
+    // and applies the smallest scale to the headline font-size in one step. This avoids
+    // iterative shrinking which could produce overly small text.
+    function fitHeadline() {
+      // Reset any inline font-size so CSS clamp can apply then read computed size
+      el.style.fontSize = ''
+      const computed = window.getComputedStyle(el)
+      const baseFontPx = parseFloat(computed.fontSize) || 48
+      const minPx = 18 // minimum font-size in px (approx 1.125rem)
+
+      const blocks = el.querySelectorAll(':scope > div')
+      let requiredScale = 1
+      for (const b of blocks) {
+        const contentW = b.scrollWidth
+        const containerW = b.clientWidth
+        if (contentW > containerW + 1) {
+          const scale = containerW / contentW
+          requiredScale = Math.min(requiredScale, scale)
+        }
+      }
+
+      // If no reduction required, ensure whitespace is nowrap and leave as-is
+      if (requiredScale >= 0.999) {
+        // restore nowrap on each line container
+        blocks.forEach((b) => {
+          const span = b.querySelector('span')
+          if (span) span.style.whiteSpace = 'nowrap'
+        })
+        el.style.fontSize = ''
+        return
+      }
+
+      // If the required scale is too small (would make text tiny), allow wrapping instead
+      const wrapThreshold = 0.85
+      if (requiredScale < wrapThreshold) {
+        // Allow the lines to wrap at word boundaries and slightly reduce font-size
+        blocks.forEach((b) => {
+          const span = b.querySelector('span')
+          if (span) {
+            span.style.whiteSpace = 'normal'
+            // tighten letter spacing a bit to keep visual weight
+            span.style.letterSpacing = '-0.01em'
+          }
+        })
+        const targetPx = Math.max(minPx, Math.floor(baseFontPx * 0.9))
+        el.style.fontSize = targetPx + 'px'
+        return
+      }
+
+      // Compute target font size but clamp to minPx
+      const targetPx = Math.max(minPx, Math.floor(baseFontPx * requiredScale))
+      el.style.fontSize = targetPx + 'px'
+    }
+
+    // Debounced resize handler
+    let raf = null
+    function onResize() {
+      if (raf) cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => fitHeadline())
+    }
+
+    // Run initially and on resize
+    fitHeadline()
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-8 pb-8">
       {/* Animated Background */}
@@ -121,6 +207,7 @@ export function Hero() {
               }}
             >
               <div className="overflow-hidden block w-full">
+                {/* Force the first headline line to remain on a single line while preserving per-character spans for animation */}
                 <span className="inline-block whitespace-nowrap">
                   {"AI Integrations &".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
@@ -129,7 +216,9 @@ export function Hero() {
                   ))}
                 </span>
               </div>
+
               <div className="overflow-hidden block w-full">
+                {/* Second headline line also forced to a single line */}
                 <span className="inline-block text-primary whitespace-nowrap">
                   {"Smart Automations".split('').map((char, index) => (
                     <span key={index} className="char inline-block">
