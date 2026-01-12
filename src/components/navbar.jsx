@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu"
 
 export function Navbar() {
+  const pathname = typeof window !== 'undefined' ? window.location.pathname.replace(/^\//,"") : "";
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,17 +19,22 @@ export function Navbar() {
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="services" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
+                <NavigationMenuLink href="services" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "services" ? " text-primary font-bold" : ""}`}>
                   Services
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="about" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
+                <NavigationMenuLink href="about" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "about" ? " text-primary font-bold" : ""}`}>
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="contact" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm">
+                <NavigationMenuLink href="project" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "project" ? " text-primary font-bold" : ""}`}>
+                  Projects
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="contact" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "contact" ? " text-primary font-bold" : ""}`}>
                   Contact
                 </NavigationMenuLink>
               </NavigationMenuItem>
