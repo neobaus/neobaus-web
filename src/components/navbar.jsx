@@ -1,8 +1,34 @@
+"use client"
+import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu"
 
 export function Navbar() {
-  const pathname = typeof window !== 'undefined' ? window.location.pathname.replace(/^\//,"") : "";
+  useEffect(() => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(navLinks).map(link => {
+      const hash = link.getAttribute('href');
+      return document.getElementById(hash?.replace('#', ''));
+    });
+    function onScroll() {
+      let current = '';
+      sections.forEach((section, idx) => {
+        if (section && window.scrollY + 80 >= section.offsetTop) {
+          current = navLinks[idx].getAttribute('href');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,22 +45,22 @@ export function Navbar() {
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="services" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "services" ? " text-primary font-bold" : ""}`}>
+                <NavigationMenuLink href="#services" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm nav-link">
                   Services
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="about" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "about" ? " text-primary font-bold" : ""}`}>
+                <NavigationMenuLink href="#about" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm nav-link">
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="project" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "project" ? " text-primary font-bold" : ""}`}>
+                <NavigationMenuLink href="#projects" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm nav-link">
                   Projects
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="contact" className={`px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm${pathname === "contact" ? " text-primary font-bold" : ""}`}>
+                <NavigationMenuLink href="#contact" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm nav-link">
                   Contact
                 </NavigationMenuLink>
               </NavigationMenuItem>
