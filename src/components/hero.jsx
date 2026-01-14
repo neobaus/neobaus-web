@@ -57,26 +57,6 @@ export function Hero() {
     // keep the script around (don't remove on unmount) to avoid reloading on navigation
   }, [])
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !headlineRef.current) return
-
-    // GSAP headline animation
-    const chars = headlineRef.current.querySelectorAll('.char')
-    
-    // Set initial state
-    gsap.set(chars, { y: -100, opacity: 0 })
-
-    // Animate characters with stagger
-    gsap.to(chars, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-      stagger: 0.05,
-      delay: 0.5
-    })
-  }, [])
-
   // Ensure headline lines stay single-line by reducing font-size if they overflow.
   useEffect(() => {
     if (typeof window === 'undefined' || !headlineRef.current) return
@@ -199,32 +179,21 @@ export function Hero() {
           {/* Text Content */}
           <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1 w-full">
             <h1 
-              ref={headlineRef}
               className="font-bold text-foreground leading-none tracking-tight text-center lg:text-left overflow-hidden w-full"
               style={{
-                fontSize: 'clamp(1.5rem, 5vw + 1rem, 6rem)',
+                fontSize: 'clamp(1.25rem, 5vw + 1rem, 6rem)',
                 letterSpacing: '-0.02em'
               }}
             >
               <div className="overflow-hidden block w-full">
-                {/* Force the first headline line to remain on a single line while preserving per-character spans for animation */}
-                <span className="inline-block whitespace-nowrap">
-                  {"AI Integrations &".split('').map((char, index) => (
-                    <span key={index} className="char inline-block">
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  ))}
+                <span className="inline-block">
+                  AI Integrations
                 </span>
               </div>
 
               <div className="overflow-hidden block w-full">
-                {/* Second headline line also forced to a single line */}
-                <span className="inline-block text-primary whitespace-nowrap">
-                  {"Smart Automations".split('').map((char, index) => (
-                    <span key={index} className="char inline-block">
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  ))}
+                <span className="inline-block text-primary">
+                  & Automations
                 </span>
               </div>
               
