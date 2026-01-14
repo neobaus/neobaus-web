@@ -18,7 +18,7 @@
     "googleapis": "^164.1.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.546.0",
-    "next": "15.5.6",
+    "next": "15.5.9",
     "next-auth": "^4.24.13",
     "nodemailer": "^7.0.10",
     "react": "19.1.0",
