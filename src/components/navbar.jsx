@@ -42,7 +42,7 @@ export function Navbar() {
           </div>
 
           {/* Navigation Links */}
-          <NavigationMenu className="hidden lg:flex">
+          {/* <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink href="#services" className="px-3 sm:px-4 py-2 hover:text-primary transition-colors text-sm nav-link">
@@ -65,7 +65,7 @@ export function Navbar() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
-          </NavigationMenu>
+          </NavigationMenu> */}
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-2 sm:space-x-4">

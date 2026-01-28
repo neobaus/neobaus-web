@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export function Hero() {
   const widgetRef = useRef(null)
@@ -143,7 +144,7 @@ export function Hero() {
     }
   }, [])
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-8 pb-8">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-16 pb-6 sm:pt-20 sm:pb-12">
       {/* Animated Background */}
       <div ref={backgroundRef} className="absolute inset-0 overflow-hidden">
         {/* Animated Gradient Background */}
@@ -174,14 +175,14 @@ export function Hero() {
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
+      <div className="container py-6 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-0 sm:min-h-[calc(100vh-4rem)]">
           {/* Text Content */}
-          <div className="flex flex-col justify-center items-center lg:items-start space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-1 w-full">
+          <div className="flex flex-col justify-center items-center lg:items-start space-y-3 sm:space-y-6 lg:space-y-8 order-1 lg:order-1 w-full">
             <h1 
               className="font-bold text-foreground leading-none tracking-tight text-center lg:text-left overflow-hidden w-full"
               style={{
-                fontSize: 'clamp(1.25rem, 5vw + 1rem, 6rem)',
+                fontSize: 'clamp(1.25rem, 5vw + 1rem, 3rem)',
                 letterSpacing: '-0.02em'
               }}
             >
@@ -209,15 +210,16 @@ export function Hero() {
                 size="lg" 
                 className="w-full lg:w-9/10 text-base sm:text-lg px-6 sm:px-4 py-4 sm:py-4 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Get Started Today
+                Upgrade Your Business Now
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
 
-          {/* SVG with Unicorn Studio - Hidden on mobile */}
-          <div 
+          {/* SVG with Unicorn Studio - shows below text on mobile */}
+          <div
             id="unicorn-studio-background"
-            className="hidden lg:block relative w-full h-[600px] xl:h-[700px] order-2"
+            className="block relative w-full h-56 sm:h-72 md:h-96 lg:h-[560px] xl:h-[660px] order-2"
             aria-label="Interactive background element - unicorn.studio integration"
           >
             <div 
