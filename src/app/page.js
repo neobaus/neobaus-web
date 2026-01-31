@@ -10,12 +10,24 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <Projects />
-      <Services />
-      <About />
-      {/* <Testimonials /> */}
-      <Footer />
+      <div className="bg-white dark:bg-neutral-900">
+        <Hero />
+      </div>
+      {/* <div className="bg-gray-100 dark:bg-neutral-800">
+        <Projects />
+      </div> */}
+      <div className="bg-gray-100 dark:bg-neutral-800">
+        <Services />
+      </div>
+      <div className="bg-white dark:bg-neutral-900">
+        <About />
+      </div>
+      {/* <div className="bg-gray-100 dark:bg-neutral-800">
+        <Testimonials />
+      </div> */}
+      <div className="bg-gray-100 dark:bg-neutral-800">
+        <Footer />
+      </div>
     </div>
   );
 }
