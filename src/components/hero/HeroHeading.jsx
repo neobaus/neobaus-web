@@ -3,7 +3,7 @@
 export function HeroHeading() {
   return (
     <h1
-      className="font-bold text-foreground leading-tight tracking-tight text-center lg:text-left w-full text-[1.75rem] sm:text-[2.25rem] lg:text-[3rem]"
+      className="font-bold text-foreground leading-tight tracking-tight text-center lg:text-left w-full text-[11vw] sm:text-[8vw] lg:text-[3.5rem] xl:text-[4rem]"
       style={{
         letterSpacing: '-0.02em',
       }}
