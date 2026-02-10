@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BarChart3, Brain, Zap, Shield, Target, TrendingUp } from "lucide-react"
+import { BarChart3, Brain, Zap, Shield, Target, TrendingUp, HardDrive } from "lucide-react"
 import SERVICES_WITH_SLUGS from "@/lib/servicesData"
+import { InteractiveCard } from "@/components/shared/InteractiveCard"
 
 export function Services() {
   const services = SERVICES_WITH_SLUGS
@@ -11,6 +12,7 @@ export function Services() {
     Brain: <Brain className="h-8 w-8 text-primary" />,
     Zap: <Zap className="h-8 w-8 text-primary" />,
     TrendingUp: <TrendingUp className="h-8 w-8 text-primary" />,
+    HardDrive: <HardDrive className="h-8 w-8 text-primary" />,
   }
 
 
@@ -32,40 +34,34 @@ export function Services() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => {
-            const href = service.href || `/services/${service.slug}`;
+            const href = service.href || `/services/${service.slug}`
+            const total = services.length
+            const remainder = total % 3
+            const isLastRow = index >= total - remainder
+            let colStartClass = ""
+
+            if (isLastRow && remainder === 1) {
+              colStartClass = "lg:col-start-2"
+            }
+            if (isLastRow && remainder === 2) {
+              if (index % 3 === 0) {
+                colStartClass = "lg:col-start-1"
+              } else {
+                colStartClass = "lg:col-start-3"
+              }
+            }
 
             return (
-              <Link
-                key={index}
-                href={href}
-                className="block group"
-                aria-label={`View details for ${service.title}`}>
-                <Card className="relative overflow-hidden transform transition-all duration-300 will-change-transform group-hover:-translate-y-1 group-hover:scale-105 active:scale-95 hover:shadow-lg">
-                  {/* subtle highlight overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 z-0" />
-                  <div className="relative z-10">
-                    <CardHeader className="pb-3 sm:pb-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-transform duration-300 group-hover:rotate-6">
-                          {iconMap[service.icon]}
-                        </div>
-                        <Badge variant="secondary" className="text-xs">
-                          {service.badge}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg sm:text-xl">
-                        {service.title}
-                        <span className="block h-0.5 bg-primary w-0 group-hover:w-full transition-all duration-300 mt-2" />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <CardDescription className="text-sm sm:text-base leading-relaxed text-foreground/90 transition-colors duration-200 group-hover:text-foreground">
-                        {service.description}
-                      </CardDescription>
-                    </CardContent>
-                  </div>
-                </Card>
-              </Link>
+              <div key={index} className={colStartClass}>
+                <InteractiveCard
+                  title={service.title}
+                  description={service.description}
+                  icon={iconMap[service.icon]}
+                  badge={service.badge}
+                  href={href}
+                  ariaLabel={`View details for ${service.title}`}
+                />
+              </div>
             )
           })}
         </div>

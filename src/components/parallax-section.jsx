@@ -19,7 +19,7 @@ export function ParallaxSection() {
         <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
           Join leading companies using our data and AI solutions to drive growth and innovation.
         </p>
-        <Button size="lg" className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-6 text-lg rounded-full transition-transform hover:scale-105 active:scale-95">
+        <Button size="lg" className="bg-primary text-black hover:bg-gray-100 font-semibold px-8 py-6 text-lg rounded-full transition-transform hover:scale-105 active:scale-95">
           Get in Touch
         </Button>
       </div>

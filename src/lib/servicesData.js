@@ -22,6 +22,14 @@ export const SERVICES = [
     badge: "Strategic",
     icon: "TrendingUp",
   },
+  {
+    title: "Hardware & Software Support",
+    description:
+      "Hardware and software support to ensure your systems run smoothly and efficiently.",
+    badge: "Strategic",
+    icon: "HardDrive",
+  },
+  
 ];
 
 // generate slug and href for each service (pure JS helper)

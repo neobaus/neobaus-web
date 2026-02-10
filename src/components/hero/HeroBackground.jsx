@@ -25,8 +25,8 @@ export function HeroBackground() {
   return (
     <div ref={backgroundRef} className="absolute inset-0 overflow-hidden">
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-primary/10"></div>
-      <div className="absolute inset-0 bg-linear-to-tr from-transparent via-primary/5 to-transparent animate-pulse"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent animate-pulse"></div>
 
       {/* Grid Pattern */}
       <div

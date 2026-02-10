@@ -13,7 +13,6 @@ export function Hero() {
   const containerRef = useRef(null)
   const textRef = useRef(null)
   const visualRef = useRef(null)
-  const mobileCtaRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,15 +24,6 @@ export function Hero() {
         stagger: 0.2,
         ease: 'power3.out',
         delay: 0.2
-      })
-
-      // Animate mobile CTA with delay to match flow
-      gsap.from(mobileCtaRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.8 // slightly after text
       })
 
       // Animate visual
@@ -77,7 +67,7 @@ export function Hero() {
           </div>
 
           {/* CTA Bottom */}
-          <div ref={mobileCtaRef} className="flex justify-center order-3 w-full lg:hidden">
+          <div className="flex justify-center order-3 w-full lg:hidden">
             <HeroCTA />
           </div>
         </div>

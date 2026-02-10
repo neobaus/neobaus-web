@@ -111,20 +111,7 @@ export function Footer() {
               </Badge> */}
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ export default function Home() {
       
       <ParallaxSection />
 
-      <div className="bg-white dark:bg-neutral-900">
+      <div className="bg-white dark:bg-neutral-800">
         <About />
       </div>
       {/* <div className="bg-gray-100 dark:bg-neutral-800">
