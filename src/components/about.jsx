@@ -48,10 +48,10 @@ export function About() {
             About Us
           </Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Data and AI-Powered Solutions
+            Data-Driven Team that Delivers Results
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Unlock the full potential of your business data with intelligent analytics that reveal insights, trends, and opportunities. Make smarter moves faster — with AI that adapts to your goals.
+            Our goal is to empower businesses with data-driven insights and solutions that drive growth, efficiency, and success.
           </p>
         </div>
 
