@@ -18,6 +18,23 @@
      setForm((prev) => ({ ...prev, [key]: value }))
    }
  
+   function handleFieldFocus(e) {
+     if (typeof window === "undefined") return
+     const el = e?.currentTarget
+     const isMobile = window.matchMedia("(max-width: 640px)").matches
+     if (!isMobile || !el) return
+ 
+     setTimeout(() => {
+       try {
+         el.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+       } catch {
+         const rect = el.getBoundingClientRect()
+         const offset = rect.top + window.scrollY - Math.max(0, window.innerHeight / 2 - rect.height / 2)
+         window.scrollTo({ top: offset, behavior: "smooth" })
+       }
+     }, 100)
+   }
+ 
    async function handleSubmit(e) {
      e.preventDefault()
      if (status === "submitting") return
@@ -123,7 +140,8 @@
                      required
                      value={form.name}
                      onChange={(e) => updateField("name", e.target.value)}
-                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                     onFocus={handleFieldFocus}
+                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                      placeholder="Jane Doe"
                    />
                  </div>
@@ -137,7 +155,8 @@
                      required
                      value={form.email}
                      onChange={(e) => updateField("email", e.target.value)}
-                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                     onFocus={handleFieldFocus}
+                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                      placeholder="jane@company.com"
                    />
                  </div>
@@ -151,7 +170,8 @@
                      rows={4}
                      value={form.message}
                      onChange={(e) => updateField("message", e.target.value)}
-                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                     onFocus={handleFieldFocus}
+                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                      placeholder="Share your goals, current challenges, and ideal timeline."
                    />
                  </div>
