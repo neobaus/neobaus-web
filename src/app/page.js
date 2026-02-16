@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects"
 import { ParallaxSection } from "@/components/parallax-section"
 import { Testimonials } from "@/components/testimonials"
 import { Footer } from "@/components/footer"
+import { LandingContact } from "@/components/landing-contact"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </div>
       
       <ParallaxSection />
+      <LandingContact />
 
       <div className="bg-white dark:bg-neutral-800">
         <About />
@@ -35,4 +37,3 @@ export default function Home() {
     </div>
   );
 }
-

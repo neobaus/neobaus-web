@@ -29,6 +29,13 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  function scrollToContact() {
+    if (typeof document === "undefined") return
+    const el = document.getElementById("contact")
+    if (!el) return
+    el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +76,7 @@ export function Navbar() {
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all duration-200 text-sm px-3 sm:px-4 py-2">
+            <Button onClick={scrollToContact} className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all duration-200 text-sm px-3 sm:px-4 py-2">
               Book a meeting
             </Button>
           </div>

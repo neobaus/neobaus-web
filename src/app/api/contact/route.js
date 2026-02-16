@@ -78,8 +78,12 @@ export async function POST(request) {
     }
 
     const user = process.env.SMTP_USER
-    const from = process.env.SMTP_FROM || user
-    const to = process.env.CONTACT_TO_EMAIL || user
+    const from = process.env.SMTP_FROM || process.env.EMAIL_FROM || user
+    const to =
+      process.env.CONTACT_TO_EMAIL ||
+      process.env.SMTP_TO ||
+      process.env.EMAIL_TO ||
+      user
 
     const transporter = await createTransporter()
 
@@ -95,6 +99,7 @@ export async function POST(request) {
     const info = await transporter.sendMail({
       from,
       to,
+      replyTo: email,
       subject,
       text,
       html,
