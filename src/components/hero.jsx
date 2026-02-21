@@ -41,6 +41,7 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden pt-1 pb-1 sm:pt-2 sm:pb-1 m:pt-1 m:pb-1">
+      <HeroBackground />
 
       {/* Content */}
       <div className="container py-6 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { BarChart3, Brain, Zap, Shield, Target, TrendingUp, HardDrive } from "lucide-react"
@@ -34,7 +33,6 @@ export function Services() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => {
-            const href = service.href || `/services/${service.slug}`
             const total = services.length
             const remainder = total % 3
             const isLastRow = index >= total - remainder
@@ -58,8 +56,7 @@ export function Services() {
                   description={service.description}
                   icon={iconMap[service.icon]}
                   badge={service.badge}
-                  href={href}
-                  ariaLabel={`View details for ${service.title}`}
+                  ariaLabel={service.title}
                 />
               </div>
             )

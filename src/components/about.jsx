@@ -57,7 +57,6 @@ export function About() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {achievements.map((service, index) => {
-            const href = service.href || `/services/${service.slug}`
             return (
               <InteractiveCard
                 key={index}
@@ -65,8 +64,7 @@ export function About() {
                 description={service.description}
                 icon={iconMap[service.icon]}
                 badge={service.badge}
-                href={href}
-                ariaLabel={`View details for ${service.title}`}
+                ariaLabel={service.title}
               />
             )
           })}

@@ -1,9 +1,11 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 export function HeroVisual() {
   const visualRef = useRef(null)
+  const [index, setIndex] = useState(0)
+  const images = ['/undraw_1.svg', '/undraw_2.svg', '/undraw_3.svg']
 
   useEffect(() => {
     if (!visualRef.current) return
@@ -20,6 +22,13 @@ export function HeroVisual() {
 
     return () => ctx.revert()
   }, [])
+  
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length)
+    }, 10000)
+    return () => clearInterval(id)
+  }, [])
 
   return (
     <div
@@ -28,7 +37,7 @@ export function HeroVisual() {
     >
       <img
         ref={visualRef}
-        src="/dev1.svg"
+        src={images[index]}
         alt="Development"
         className="w-full h-full object-contain object-center"
       />
