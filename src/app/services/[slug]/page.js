@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import SERVICES from "@/lib/servicesData"
 import { Card } from "@/components/ui/card"
+import Script from "next/script"
 
 export default function ServicePage({ params }) {
   const { slug } = params
@@ -11,6 +12,9 @@ export default function ServicePage({ params }) {
   if (!service) {
     return notFound()
   }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.neobaus.com"
+  const serviceUrl = `${siteUrl}/services/${slug}`
 
   return (
     <section className="py-12 sm:py-16 lg:py-20">
@@ -28,6 +32,56 @@ export default function ServicePage({ params }) {
               </Link>
             </div>
           </Card>
+          <Script
+            id="ld-service"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                serviceType: service.title,
+                name: service.title,
+                description: service.description,
+                provider: {
+                  "@type": "Organization",
+                  name: "neobaus",
+                  areaServed: "PH",
+                  url: siteUrl,
+                },
+                url: serviceUrl,
+              }),
+            }}
+          />
+          <Script
+            id="ld-breadcrumb"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: siteUrl,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Services",
+                    item: `${siteUrl}/services`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: service.title,
+                    item: serviceUrl,
+                  },
+                ],
+              }),
+            }}
+          />
         </div>
       </div>
     </section>
