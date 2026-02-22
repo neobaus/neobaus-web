@@ -81,48 +81,51 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <ClerkProvider>
-      <html lang="en" className="dark">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <AuthProvider>{children}</AuthProvider>
-          <Toaster richColors position="top-center" />
-          <Script
-            id="ld-org"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                name: "neobaus",
-                url: siteUrl,
-                areaServed: "PH",
-                logo: `${siteUrl}/globe.svg`,
-                sameAs: [],
-              }),
-            }}
-          />
-          <Script
-            id="ld-website"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                url: siteUrl,
-                name: "neobaus",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: `${siteUrl}/search?q={search_term_string}`,
-                  "query-input": "required name=search_term_string",
-                },
-              }),
-            }}
-          />
-        </body>
-      </html>
-    </ClerkProvider>
+  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  const AppShell = (
+    <html lang="en" className="dark">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <AuthProvider>{children}</AuthProvider>
+        <Toaster richColors position="top-center" />
+        <Script
+          id="ld-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "neobaus",
+              url: siteUrl,
+              areaServed: "PH",
+              logo: `${siteUrl}/globe.svg`,
+              sameAs: [],
+            }),
+          }}
+        />
+        <Script
+          id="ld-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              url: siteUrl,
+              name: "neobaus",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${siteUrl}/search?q={search_term_string}`,
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </body>
+    </html>
   );
+  if (!publishableKey) {
+    return AppShell;
+  }
+  return <ClerkProvider publishableKey={publishableKey}>{AppShell}</ClerkProvider>;
 }
