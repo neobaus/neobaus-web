@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.neobaus.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "neobaus | AI Integrations & Software Development  in the Philippines",
+    default: "neobaus | AI & Software Development in the Philippines",
     template: "%s | neobaus",
   },
   description:

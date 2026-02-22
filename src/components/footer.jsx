@@ -6,15 +6,14 @@ import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from "lucide-react"
 export function Footer() {
   const footerLinks = {
     Services: [
-      { name: "AI Integrations", href: "#services" },
-      { name: "Analytics", href: "#analytics" },
-      { name: "Custom Development", href: "#pricing" },
-      
+      { name: "AI Integrations", href: "/services/ai-integrations" },
+      { name: "Analytics", href: "/#analytics" },
+      { name: "Custom Development", href: "/services/custom-developments" },
     ],
     Company: [
-      { name: "About Us", href: "#about" },
+      { name: "About Us", href: "/about" },
     ],
-    
+  
     // Legal: [
     //   { name: "Privacy Policy", href: "#" },
     //   { name: "Terms of Service", href: "#" },
@@ -79,7 +78,7 @@ export function Footer() {
             {/* Footer Links */}
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
-                <h4 className="font-semibold text-foreground mb-4">{category}</h4>
+                <h3 className="font-semibold text-foreground mb-4">{category}</h3>
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.name}>
