@@ -1,8 +1,7 @@
 import SERVICES_WITH_SLUGS from "@/lib/servicesData";
 
 export default function sitemap() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.neobaus.com").replace(/\/+$/, "");
 
   const staticRoutes = ["", "/about", "/services", "/contact"];
   const serviceRoutes = (SERVICES_WITH_SLUGS || []).map(
